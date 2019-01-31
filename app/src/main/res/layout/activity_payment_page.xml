@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/outputText"
+                android:hint="Output"
+                />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:gravity="center"
+            android:background="#ccc"
+            android:textSize="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="Net Banking"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bankCode"
+                android:hint="Bank Code"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="PAY"
+                android:layout_marginBottom="3dp"
+                android:background="#555"
+                android:textColor="#fff"
+                android:onClick="nbClick"
+                />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+            android:id="@+id/createWalletContainer"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Create Wallet"
+                android:textSize="20dp"
+                android:background="#ccc"
+                android:gravity="center"
+                android:layout_marginBottom="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/walletForCW"
+                android:hint="Wallet Name"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sellerId"
+                android:hint="Amazon Seller id for AMAZONPAY"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CREATE"
+                android:layout_marginBottom="3dp"
+                android:background="#555"
+                android:textColor="#fff"
+                android:onClick="createWalletClick"
+                />
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/refreshBalancesContainer"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Refresh Balances"
+                    android:background="#555"
+                    android:textColor="#fff"
+                    android:onClick="refreshBalancesClick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+        android:id="@+id/linkWalletContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+             <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/enterOtp"
+                android:hint="Enter Otp"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/walletId"
+                android:hint="Wallet Id"
+                />
+
+            <Button
+                android:text="Link"
+                android:background="#555"
+                android:textColor="#fff"
+                android:onClick="linkWalletClick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+        <TextView
+            android:gravity="center"
+            android:background="#ccc"
+            android:textSize="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="Wallet Debit"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+    <LinearLayout
+        android:id="@+id/walletDirContainer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/walletNameForDebit"
+                android:hint="Wallet Name"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/walletDirToken"
+                android:hint="Wallet Direct Token"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/sdkPresent"
+                android:hint="SDK Present"
+                />
+
+        <Button
+            android:text="Pay"
+            android:background="#555"
+            android:textColor="#fff"
+            android:onClick="walletDirClick"
+            android:layout_marginBottom="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:gravity="center"
+        android:background="#ccc"
+        android:textSize="20dp"
+        android:layout_marginBottom="3dp"
+        android:text="UPI Payment"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/custVpa"
+        android:hint="Customer vpa for UPI Collect"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/payWithApp"
+        android:hint="Pay with App (Package name of upi app)"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upi SDK Present"
+            />
+
+        <CheckBox
+            android:id="@+id/upiSdkPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PAY"
+        android:layout_marginBottom="3dp"
+        android:background="#555"
+        android:textColor="#fff"
+        android:onClick="upiClick"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GET PAYMENT METHODS"
+        android:layout_marginBottom="3dp"
+        android:background="#555"
+        android:textColor="#fff"
+        android:onClick="getPaymentMethods"
+        />
+
+    <TextView
+        android:gravity="center"
+        android:background="#ccc"
+        android:textSize="20dp"
+        android:layout_marginBottom="3dp"
+        android:text="Google Pay"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/gpay_mobile_number"
+        android:inputType="number|textNoSuggestions"
+        android:hint="Customer mobile number (Linked with Google Pay)" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Is Ready?"
+        android:layout_marginBottom="3dp"
+        android:background="#555"
+        android:textColor="#fff"
+        android:onClick="googlePayReady"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pay With Google Pay"
+        android:layout_marginBottom="3dp"
+        android:background="#555"
+        android:textColor="#fff"
+        android:onClick="payWithGooglePay"
+        />
+
+        <TextView
+            android:gravity="center"
+            android:background="#ccc"
+            android:textSize="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="Delink Wallet"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+       <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/delinkWalletName"
+        android:hint="Wallet Name"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/delinkWalletId"
+        android:hint="WalletId"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delink Wallet"
+        android:layout_marginBottom="3dp"
+        android:background="#555"
+        android:textColor="#fff"
+        android:onClick="delinkWallet"
+        />
+
+        <TextView
+            android:gravity="center"
+            android:background="#ccc"
+            android:textSize="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="Refresh Wallet"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/refreshWalletName"
+            android:hint="Wallet Name"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/refreshWalletId"
+            android:hint="WalletId"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh Wallet"
+            android:layout_marginBottom="3dp"
+            android:background="#555"
+            android:textColor="#fff"
+            android:onClick="refreshWallet"
+            />
+
+            <TextView
+                android:gravity="center"
+                android:background="#ccc"
+                android:textSize="20dp"
+                android:layout_marginBottom="3dp"
+                android:text="Delete Card"
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/cardtoken_deletecard"
+                android:hint="Card Token"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Delete Card"
+                android:layout_marginBottom="3dp"
+                android:background="#555"
+                android:textColor="#fff"
+                android:onClick="deleteCard"
+                />
+
+
+            <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:gravity="center"
+            android:background="#ccc"
+            android:textSize="20dp"
+            android:layout_marginBottom="3dp"
+            android:text="Card"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/cardToken"
+            android:hint="Card Token if stored card"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/authType"
+            android:hint="Auth type for atm redirect and seamless"
+            />
+
+        <include android:id="@+id/cardTxn" layout="@layout/card_layout"/>
+
+    </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
+
+
