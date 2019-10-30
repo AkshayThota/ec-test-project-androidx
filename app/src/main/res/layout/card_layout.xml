@@ -3,91 +3,100 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-        <EditText
-            android:id="@+id/nameOnCard"
-            android:hint="Name on card"
-            android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/nameOnCard"
+        android:hint="Name on card (Regular Card)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/cardNumber"
+        android:hint="Card Number (Regular Card)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/cvv"
+        android:hint="CVV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/expMonth"
+        android:hint="Expriry Month (Regular card)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/expYear"
+        android:hint="Expiry Year (Regular card)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/cardType"
+        android:hint="Card Type Ex: Visa (Regular card)"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Is Emi"
+            />
+
+        <CheckBox
+            android:id="@+id/isEmi"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/cardNumber"
-            android:hint="Card Number"
-            android:layout_width="match_parent"
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/emiBank"
+        android:hint="Emi bank Ex: HDFC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:id="@+id/emiTenure"
+        android:hint="Emi Tenure Ex: 3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save For Future"
+            />
+
+        <CheckBox
+            android:id="@+id/saveForFuture"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/cvv"
-            android:hint="CVV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/expMonth"
-            android:hint="Expriry Month"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/expYear"
-            android:hint="Expiry Year"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/cardType"
-            android:hint="Card Type Ex: Visa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Is Emi"
-                />
-
-            <CheckBox
-                android:id="@+id/isEmi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/emiBank"
-            android:hint="Emi bank Ex: HDFC"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/emiTenure"
-            android:hint="Emi Tenure Ex: 3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Save For Future"
-                />
-
-            <CheckBox
-                android:id="@+id/saveForFuture"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/card_layout_action"
         android:text="PAY"
+        android:background="#555"
+        android:textColor="#fff"
+        android:layout_marginBottom="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/tokenize_card"
+        android:text="Tokenize the card"
         android:background="#555"
         android:textColor="#fff"
         android:layout_width="match_parent"

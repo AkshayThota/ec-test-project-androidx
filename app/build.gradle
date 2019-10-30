@@ -5,27 +5,35 @@ android {
         newconfig {
             keyAlias 'ectestprojectalias'
             keyPassword 'ectestproject'
-            storeFile file('/Users/kiran.puppala/Juspay/ec-test-project/keys/ectestproject.jks')
+            storeFile file('/Users/kiranpuppala/Juspay/ec-test-project/keys/ectestproject.jks')
             storePassword 'ectestproject'
+        }
+
+        amazonconfig {
+            keyAlias 'amazonpayalias'
+            keyPassword 'amazonpay'
+            storeFile file('/Users/kiranpuppala/Juspay/ec-test-project/keys/amazonpaykey')
+            storePassword 'amazonpay'
         }
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "in.juspay.ectestproject"
-        minSdkVersion 19
+        applicationId "in.juspay.amazonpay"
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.newconfig
+            signingConfig signingConfigs.amazonconfig
         }
         debug {
-            signingConfig signingConfigs.newconfig
+            signingConfig signingConfigs.amazonconfig
         }
     }
 }
@@ -34,21 +42,36 @@ repositories {
 
     mavenCentral()
     maven {
-        url "https://s3-ap-southeast-1.amazonaws.com/jp-build-packages/release/"
+        url "https://maven.juspay.in/jp-build-packages/release/"
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation "androidx.multidex:multidex:2.0.0"
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'in.juspay:godel-ec:1.0.6'
-    compile 'com.android.support:customtabs:28.0.0'
-    compile project(':PWAINSilentPayAndroidSDK')
-    compile project(':AmazonIdentityMobileAndroidSDK-silentPay-release')
+    androidTestImplementation 'androidx.test:runner:1.1.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
+    implementation 'com.android.support:customtabs:28.0.0'
+//
+//    implementation ('in.juspay:hyper-sdk:1.0.6_2')
+//    implementation ('in.juspay:jp-android-lib:3.1.2-3')
+//    implementation ('in.juspay:mystique:0.2.25')
+
+//    implementation project(':godel-internal-ec-qa')
+
+    implementation ('in.juspay:godel-ec:1.0.7.6')
+
+    implementation 'androidx.multidex:multidex:2.0.0'
+    implementation 'androidx.browser:browser:1.0.0'
+    implementation project(':PWAINSilentPayAndroidSDK')
+    implementation project(':GooglePaySdk')
+    implementation 'com.google.android.gms:play-services-tasks:15.0.1'
+    implementation project(':AmazonIdentityMobileAndroidSDK-silentPay-release')
+    implementation project(':android-magnessdk-4.0.3')
     implementation files('libs/cordova-2.2.0.jar')
     implementation files('libs/glide-3.7.0.jar')
 }
+

@@ -4,6 +4,10 @@ import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.security.ProviderInstaller;
+
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -40,8 +44,9 @@ public class NetbankingUtils {
 
     static JuspayHTTPResponse[] generateOrder(String orderId, String mobile, String email, Context context) {
         try {
+            initializeSSLContext(context);
             String orderUrls[] = new String[]{context.getString(R.string.base_url) + "/order/create"};
-            String auths[] = new String[]{Base64.encodeToString((R.string.api_key + ":").getBytes(), Base64.DEFAULT)};
+            String auths[] = new String[]{Base64.encodeToString((Utils.getApiKey(context.getString(R.string.mid)) + ":").getBytes(), Base64.DEFAULT)};
             JuspayHTTPResponse response[] = new JuspayHTTPResponse[orderUrls.length];
 
             for (int i = 0; i < orderUrls.length; i++) {
@@ -50,7 +55,7 @@ public class NetbankingUtils {
 
                 connection.setSSLSocketFactory(new TLSSocketFactory());
                 connection.setRequestMethod("POST");
-                connection.setRequestProperty("Authorization", "Basic QjcxNzFCMDEwOTU0RUUxQUIwRDVEMjhGQjAwNDcyOg==");
+                connection.setRequestProperty("Authorization", "Basic " + auths[i]);
                 connection.setRequestProperty("version", "2018-07-01");
                 connection.setDoOutput(true);
 
@@ -63,7 +68,8 @@ public class NetbankingUtils {
                 payload.put("return_url", context.getString(R.string.end_url));
                 payload.put(JuspayConstants.DESCRIPTION, "Test Transaction");
                 payload.put("options.get_client_auth_token", "true");
-                payload.put("metadata.AXIS_UPI:gateway_reference_id", "1c172215b3004f51a3af982cf1b6c1fc");
+                payload.put("metadata.AMAZONPAY:sellerNote", "TEST");
+//                payload.put("metadata.AXIS_UPI:gateway_reference_id", "1c172215b3004f51a3af982cf1b6c1fc");
 
                 OutputStream stream = connection.getOutputStream();
                 stream.write(generateQueryString(payload).getBytes());
@@ -80,7 +86,7 @@ public class NetbankingUtils {
     static void createCustomer(String mobile, String email, Context context) {
         try {
             String url =context.getString(R.string.base_url) + "/customers";
-            String auth = Base64.encodeToString((R.string.api_key + ":").getBytes(), Base64.DEFAULT);
+            String auth = Base64.encodeToString((Utils.getApiKey(context.getString(R.string.mid)) + ":").getBytes(), Base64.DEFAULT);
             JuspayHTTPResponse response = null;
 
             HttpsURLConnection connection = (HttpsURLConnection) (new URL(url).openConnection());
@@ -99,6 +105,7 @@ public class NetbankingUtils {
             payload.put(JuspayConstants.DESCRIPTION, "Test Transaction");
             payload.put("options.get_client_auth_token", "true");
 
+            initializeSSLContext(context);
             OutputStream stream = connection.getOutputStream();
             stream.write(generateQueryString(payload).getBytes());
             response = new JuspayHTTPResponse(connection);
@@ -114,7 +121,7 @@ public class NetbankingUtils {
             HttpsURLConnection connection = (HttpsURLConnection) (new URL(context.getString(R.string.base_url) + "/orders/" + orderId + "/refunds").openConnection());
             connection.setRequestMethod("POST");
             connection.setSSLSocketFactory(new TLSSocketFactory());
-            connection.setRequestProperty("Authorization", "Basic " + Base64.encodeToString((R.string.api_key + ":").getBytes(), Base64.DEFAULT));
+            connection.setRequestProperty("Authorization", "Basic " + Base64.encodeToString((Utils.getApiKey(context.getString(R.string.mid)) + ":").getBytes(), Base64.DEFAULT));
             connection.setDoOutput(true);
 
             Map<String, String> payload = new HashMap<>();
@@ -138,7 +145,7 @@ public class NetbankingUtils {
             HttpsURLConnection connection = (HttpsURLConnection) (new URL(context.getString(R.string.base_url) + "/orders/" + orderId)).openConnection();
             connection.setRequestMethod("POST");
             connection.setSSLSocketFactory(new TLSSocketFactory());
-            connection.setRequestProperty("Authorization", "Basic " + Base64.encodeToString((R.string.api_key + ":").getBytes(), Base64.DEFAULT));
+            connection.setRequestProperty("Authorization", "Basic " + Base64.encodeToString((Utils.getApiKey(context.getString(R.string.mid)) + ":").getBytes(), Base64.DEFAULT));
             connection.setDoOutput(true);
 
             Map<String, String> payload = new HashMap<>();
@@ -184,6 +191,22 @@ public class NetbankingUtils {
     }
 
 
+    public static void initializeSSLContext(Context mContext){
+        try {
+            SSLContext.getInstance("TLSv1.2");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            ProviderInstaller.installIfNeeded(mContext.getApplicationContext());
+        } catch (GooglePlayServicesRepairableException e) {
+            e.printStackTrace();
+        } catch (GooglePlayServicesNotAvailableException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 
@@ -200,18 +223,7 @@ public class NetbankingUtils {
         return sb.toString();
     }
 
-    public static SSLContext initializeSSLContext(Context mContext){
-        try {
-            SSLContext instance = SSLContext.getInstance("TLSv1.2");
-            instance.init(null, null, new java.security.SecureRandom());
-            return instance;
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (KeyManagementException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+
 
 }
 

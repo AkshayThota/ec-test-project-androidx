@@ -1,6 +1,6 @@
 package in.juspay.ectestproject;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import org.json.JSONObject;
 

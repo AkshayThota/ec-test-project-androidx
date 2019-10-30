@@ -9,7 +9,9 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/AmazonIdentityMobileAndroidSDK-silentPay-release" />
+            <option value="$PROJECT_DIR$/GooglePaySdk" />
             <option value="$PROJECT_DIR$/PWAINSilentPayAndroidSDK" />
+            <option value="$PROJECT_DIR$/android-magnessdk-4.0.3" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
