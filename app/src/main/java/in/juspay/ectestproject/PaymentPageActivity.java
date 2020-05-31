@@ -2,7 +2,9 @@ package in.juspay.ectestproject;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Point;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
@@ -72,8 +74,12 @@ public class PaymentPageActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_payment_page);
 
+
         fragment = new PaymentFragment();
 
+        if(Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
+            this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
 
         createWalletContainer = findViewById(R.id.createWalletContainer);
         refreshBalancesSdkIdentifier = findViewById(R.id.refreshBalancesSdkIdentifier);
@@ -161,9 +167,9 @@ public class PaymentPageActivity extends AppCompatActivity {
         try {
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("opName", "createWallet");
-            jsonObject.put("walletName", walletForCW.getText().toString());
+            jsonObject.put("walletName", "AMAZONPAY");
             jsonObject.put("command", "authenticate");
-            jsonObject.put("sdkWalletIdentifier", sellerId.getText().toString());
+            jsonObject.put("sdkWalletIdentifier", "A3VTZ852WRO7IE");
             jsonObject.put("otpPage", false);
             Bundle newBundle = new Bundle(bundle);
             newBundle.putString("payload", jsonObject.toString());

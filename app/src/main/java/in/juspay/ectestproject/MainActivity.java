@@ -19,6 +19,7 @@ import java.util.Arrays;
 
 import in.juspay.godel.PaymentActivity;
 import in.juspay.godel.core.PaymentConstants;
+import in.juspay.godel.ui.PaymentFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -102,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             intentBundle.putString(PaymentConstants.CUSTOMER_ID, customerId);
             intentBundle.putString(PaymentConstants.CLIENT_EMAIL, customerEmail);
             intentBundle.putString(PaymentConstants.CLIENT_MOBILE_NO, customerMobile);
-            intentBundle.putString(PaymentConstants.ENV, PaymentConstants.ENVIRONMENT.PRODUCTION);
+            intentBundle.putString(PaymentConstants.ENV, PaymentConstants.ENVIRONMENT.SANDBOX);
 
             ///Godel Params
             intentBundle.putStringArrayList(PaymentConstants.END_URLS, endUrls);

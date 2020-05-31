@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">dream11</string>
-    <string name="mid">dream11</string>
-    <string name="base_url">https://api.juspay.in</string>
-    <string name="end_url">https://api.juspay.in/end</string>
+    <string name="mid">dailyninja</string>
+    <string name="base_url">https://sandbox.juspay.in</string>
+    <string name="end_url">https://sandbox.juspay.in/end</string>
 </resources>

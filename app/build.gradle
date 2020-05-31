@@ -5,20 +5,20 @@ android {
         newconfig {
             keyAlias 'ectestprojectalias'
             keyPassword 'ectestproject'
-            storeFile file('/Users/kiranpuppala/Juspay/ec-test-project/keys/ectestproject.jks')
+            storeFile file('Users/akshaythota/Downloads/ec-test-project-androidx/keys/ectestproject.jks')
             storePassword 'ectestproject'
         }
 
         amazonconfig {
             keyAlias 'amazonpayalias'
             keyPassword 'amazonpay'
-            storeFile file('/Users/kiranpuppala/Juspay/ec-test-project/keys/amazonpaykey')
+            storeFile file('/Users/akshaythota/Downloads/ec-test-project-androidx/keys/amazonpaykey')
             storePassword 'amazonpay'
         }
     }
     compileSdkVersion 28
     defaultConfig {
-        applicationId "in.juspay.amazonpay"
+        applicationId "in.juspay.amazonpay.test"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
@@ -42,7 +42,7 @@ repositories {
 
     mavenCentral()
     maven {
-        url "https://maven.juspay.in/jp-build-packages/release/"
+        url "https://maven.juspay.in/jp-build-packages/beta/"
     }
 }
 
@@ -62,7 +62,7 @@ dependencies {
 
 //    implementation project(':godel-internal-ec-qa')
 
-    implementation ('in.juspay:godel-ec:1.0.7.6')
+    implementation ('in.juspay:godel-ec:1.0.7.15')
 
     implementation 'androidx.multidex:multidex:2.0.0'
     implementation 'androidx.browser:browser:1.0.0'

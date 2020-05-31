@@ -68,8 +68,8 @@ public class NetbankingUtils {
                 payload.put("return_url", context.getString(R.string.end_url));
                 payload.put(JuspayConstants.DESCRIPTION, "Test Transaction");
                 payload.put("options.get_client_auth_token", "true");
-                payload.put("metadata.AMAZONPAY:sellerNote", "TEST");
-//                payload.put("metadata.AXIS_UPI:gateway_reference_id", "1c172215b3004f51a3af982cf1b6c1fc");
+                payload.put("metadata.PAYPAL:gateway_reference_id", "NA");
+//                payload.put("metadata.PHONEPE:gateway_reference_id", "PRODUCTION");
 
                 OutputStream stream = connection.getOutputStream();
                 stream.write(generateQueryString(payload).getBytes());
